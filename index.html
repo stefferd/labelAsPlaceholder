@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Label as placeholder</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <label for="name" id="label_name">Name</label><br />
+            <input type="text" id="name" size="100" />
+        </div>
+        <div class="form error">
+            <label for="lastname" id="label_lastname">Lastname</label><br />
+            <input type="text" id="lastname" size="100" />
+        </div>
+        <div class="form">
+            <label for="address" id="label_address">Address</label><br />
+            <input type="text" id="address" size="100" />
+        </div>
+        <div class="form">
+            <label for="housenumber" id="label_housenumber">Housenr</label><br />
+            <input type="text" id="housenumber" size="10" />
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+    <script src="js/label.plugin.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).on('ready', function() {
+            $('input').labelAsPlaceholder({ distanceLabelToInput: '21px'});
+        });
+    </script>
+</body>
+</html>
