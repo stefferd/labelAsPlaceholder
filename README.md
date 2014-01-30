@@ -5,8 +5,7 @@ This jQuery plugin Set the label as placeholder and animate the placeholder to l
 
 To use it the html needs to be setup as the example bellow:
 
-<code><div class="control-group">
-  <label>Label as placeholder</label>
-  <input type="text" name="input" />
-</div>
-</code>
+&lt;div class="control-group"&gt;<br />
+  &lt;label>Label as placeholder&lt;/label&gt;<br />
+  &lt;input type="text" name="input" /&gt;<br />
+&lt;/div&gt;
