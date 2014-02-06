@@ -46,28 +46,55 @@
                 if (parent.hasClass('error')) {
                     colorLabel = settings.colorLabelOnError;
                 }
-                label.css('position', 'relative');
-                label.animate({ top: settings.distanceLabelToInput, left: settings.distanceToLeft, color: colorLabel });
+		if (self.attr('type') == 'date') {
+		  label.css('visibility', 'hidden');
+		} else {
+                  label.css('position', 'relative');
+                  label.animate({ top: settings.distanceLabelToInput, left: settings.distanceToLeft, color: colorLabel });
+		}
             }
 
-            self.bind('focus', function() {
-                var color = settings.defaultLabel;
-                if (parent.hasClass('error')) {
-                    color = settings.colorLabelOnError;
-                }
-                label.animate({ top: 0, color: color});
-            });
+	    if (self.attr('type') == 'date') {
+		self.bind('focus', function() {
+		  var color = settings.defaultLabel;
+		  if (parent.hasClass('error')) {
+		    color = settings.colorLabelOnError;
+		  }
+		  label.animate({ color: color });
+		  label.css('visibility', 'visible');
+		});
+		
+		self.bind('blur', function() {
+		  var input = $(this);
+		  if (input.val() == '') {
+		    var color = settings.colorPlaceholder;
+		    if (parent.hasClass('error')) {
+			color = settings.colorLabelOnError;
+		    }
+		    label.animate({ color: color});
+		    label.css('visibility', 'hidden');
+		  }
+		});
+	    } else {
+		self.bind('focus', function() {
+		  var color = settings.defaultLabel;
+		  if (parent.hasClass('error')) {
+		    color = settings.colorLabelOnError;
+		  }
+		  label.animate({ top: 0, color: color});
+		});
 
-            self.bind('blur', function() {
-                var input = $(this);
-                if (input.val() == '') {
-                    var color = settings.colorPlaceholder;
-                    if (parent.hasClass('error')) {
-                        color = settings.colorLabelOnError;
-                    }
-                    label.animate({ top: settings.distanceLabelToInput, color: color});
-                }
-            });
+		self.bind('blur', function() {
+		  var input = $(this);
+		  if (input.val() == '') {
+		    var color = settings.colorPlaceholder;
+		    if (parent.hasClass('error')) {
+			color = settings.colorLabelOnError;
+		    }
+		    label.animate({ top: settings.distanceLabelToInput, color: color});
+		  }
+		});
+	    }
         });
     };
 }( jQuery ));
